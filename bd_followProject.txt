@@ -1,0 +1,46 @@
+create database followProject;
+
+
+
+create table funcionario(
+        id_func INT NOT NULL AUTO_INCREMENT,
+	nome_func VARCHAR(50) NOT NULL,
+	cpf_func  VARCHAR(15) NOT NULL,
+	cargo VARCHAR(20),
+        setor VARCHAR(20),
+	data_nasc date,
+	sexo CHAR,
+	cidade VARCHAR(20),
+        estado VARCHAR(20),
+	email VARCHAR(20),
+	tel VARCHAR(15),
+	cel VARCHAR(15),
+	PRIMARY KEY(id_func)
+);
+
+create table projeto(
+	id_projeto INT NOT NULL AUTO_INCREMENT,
+	nome_proj VARCHAR(50) NOT NULL,
+        gerente VARCHAR(50),
+        supervisor VARCHAR(50),
+        analista VARCHAR(50),
+        setor VARCHAR(20),
+        status VARCHAR(20),
+	dt_inicio date,
+	dt_fim date,
+	PRIMARY KEY(id_projeto)
+);
+
+create table usuario(
+	usuario VARCHAR(20) NOT NULL,
+        senha INT NOT NULL,
+	tipo_conta CHAR,
+	id_usuario_func int,
+	CONSTRAINT fk_usuario_funcionario FOREIGN KEY
+        (id_usuario_func) REFERENCES funcionario (id_func)
+);
+
+
+
+
+ALTER TABLE projeto ADD descricao varchar(50)
